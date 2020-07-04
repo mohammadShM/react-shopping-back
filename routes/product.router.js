@@ -12,7 +12,7 @@ router.get("/:id/comments", productControllers.getCommentById);
 // noinspection JSUnresolvedFunction
 router.post(
    "/:id/comments",
-   [check("title").not().isEmpty(), check("description").isLength({ min: 5 })],
+   [check("author").not().isEmpty(), check("text").isLength({ min: 2 })],
    productControllers.createComment
 );
 // export =====================================================================================
