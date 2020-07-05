@@ -1,11 +1,14 @@
 // global var
 const express = require("express");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 // local var
 const HttpError = require("./models/http-error");
 const productRouter = require("./routes/product.router");
 // initial variable
 const app = express();
+app.use(bodyParser.json()); //Make sure u have added this line
+app.use(bodyParser.urlencoded({ extended: false }));
 // middleware
 app.use(cors());
 // products route handler
