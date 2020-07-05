@@ -7,6 +7,7 @@ const HttpError = require("./models/http-error");
 const productRouter = require("./routes/product.router");
 // initial variable
 const app = express();
+// set body
 app.use(bodyParser.json()); //Make sure u have added this line
 app.use(bodyParser.urlencoded({ extended: false }));
 // middleware
