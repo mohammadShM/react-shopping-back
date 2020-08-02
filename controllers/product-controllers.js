@@ -8,7 +8,17 @@ const fakeData = require("../models/fakeDataFile");
 const data = fakeData.data;
 // for routers
 const getAllProducts = (req, res) => {
-   res.json(data.products);
+   if (req.query.q && req.query.q !== undefined && req.query.q !== "") {
+      const result = _.filter(
+         data.products,
+         (item) =>
+            item.title.toLowerCase().includes(req.query.q.toLowerCase()) ||
+            item.desc.toLowerCase().includes(req.query.q.toLowerCase())
+      );
+      res.json(result);
+   } else {
+      res.json(data.products);
+   }
 };
 const getProductById = (req, res) => {
    res.json(_.find(data.products, { id: parseInt(req.params.id) }));
